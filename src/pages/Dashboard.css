@@ -1,0 +1,13 @@
+.container{
+    /* background-color: blanchedalmond; */
+    margin-left: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.imgLogo{
+    width: 49%;
+    height: 30%;
+}

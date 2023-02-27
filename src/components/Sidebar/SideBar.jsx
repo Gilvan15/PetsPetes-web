@@ -8,12 +8,30 @@ import { BsCartCheck } from "react-icons/bs";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
+import { Link } from "react-router-dom";
 import Logo from '../../assets/logo.png';
 const routes = [
   {
     path: "/",
-    name: "Dashboard",
+    name: "Cadastro",
     icon: <FaHome />,
+    subRoutes: [
+      {
+        path: "/settings/profile",
+        name: "Usuário",
+        icon: <FaUser />,
+      },
+      {
+        path: "/settings/2fa",
+        name: "Cliente",
+        icon: <FaLock />,
+      },
+      {
+        path: "/settings/billing",
+        name: "Serviço",
+        icon: <FaMoneyBill />,
+      },
+    ],
   },
   {
     path: "/users",
@@ -88,7 +106,7 @@ const routes = [
 ];
 
 const SideBar = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
   const inputAnimation = {
     hidden: {
@@ -149,7 +167,10 @@ const SideBar = ({ children }) => {
                   exit="hidden"
                   className="logo"
                 >
-                  <img className="logoPets" src={Logo} alt="LogoPetsEPets" />
+                  <Link to="/" >
+                    <img className="logoPets" src={Logo} alt="LogoPetsEPets" />
+                  </Link>
+
                 </motion.h1>
               )}
             </AnimatePresence>
@@ -159,23 +180,6 @@ const SideBar = ({ children }) => {
             </div>
           </div>
 
-          {/* <div className="search">
-            <div className="search_icon">
-              <BiSearch />
-            </div>
-            <AnimatePresence>
-              {isOpen && (
-                <motion.input
-                  initial="hidden"
-                  animate="show"
-                  exit="hidden"
-                  variants={inputAnimation}
-                  type="text"
-                  placeholder="Search"
-                />
-              )}
-            </AnimatePresence>
-          </div> */}
           <section className="routes">
             {routes.map((route, index) => {
               if (route.subRoutes) {
