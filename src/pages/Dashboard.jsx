@@ -37,6 +37,7 @@ const Dashboard = () => {
         >
           <div className="container">
             <img className='imgLogo' src={logo2} alt="Logo de entrada" />
+            <p>Test!</p>
           </div>
 
         </motion.h1>
